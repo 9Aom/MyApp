@@ -24,7 +24,6 @@ const App = () => (
 
 {/* Numboard */}
   <View>
-    {['1','2','3','4','5','6','7','8','9','0','00','.'].map((num) => ( 
       <View style={styles.NumBoard} >
       {/* Info Num */}
         <TouchableOpacity>
@@ -49,10 +48,29 @@ const App = () => (
         </TouchableOpacity>
     </View>
 
-    
-
-     ) )};
-      
+      <View style={styles.NumBoard} >
+      {/* Info Num */}
+        <TouchableOpacity>
+      <View style={styles.NumS3} >
+        <Text style={styles.NumSstyle} >7</Text>
+      </View>
+        </TouchableOpacity>
+        <TouchableOpacity>
+      <View style={styles.NumS3} >
+        <Text style={styles.NumSstyle} >8</Text>
+      </View>
+        </TouchableOpacity>
+        <TouchableOpacity>
+      <View style={styles.NumS3} >
+          <Text style={styles.NumSstyle} >9</Text>
+      </View>
+        </TouchableOpacity>
+        <TouchableOpacity>
+      <View style={styles.NumS2} >
+          <Text style={styles.NumSstyle} >X</Text>
+      </View>
+        </TouchableOpacity>
+    </View>
   
   <View style={styles.NumBoard} >
     {/* Info Num */}
@@ -156,7 +174,7 @@ const styles = StyleSheet.create({
   SecText: {
     alignItems: 'flex-end',
     justifyContent: 'flex-end',
-    backgroundColor: 'red',
+    // backgroundColor: 'red',
     top: 20
   },
   NumBoard: {
