@@ -1,153 +1,169 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
 
-const Display = () => {
-const [display, setDisplay] = useState('');
-};
+const App = () => {
+  const [display, setDisplay] = useState('');
 
-const Press = ( value ) => {
-  setDisplay((prev) => prev + value);
-};
+  const Press = (value) => {
+    setDisplay((prev) => prev + value);
+  };
 
-const App = () => (
-  <View style={{ backgroundColor: '#000',flex: 1}} >
-    <View style={styles.Top} >
-      <Text style={styles.textStyle} >
-        Calculator
-      </Text>
-    </View>
-      <View style={styles.Sec} >
-        <View style={styles.SecText} >
-          <Text style={{fontSize: 50, color: 'white'}} >  </Text>
+  const calculateResult = () => {
+    try {
+      setDisplay(eval(display).toString());
+    } catch (e) {
+      setDisplay('Error');
+    }
+  };
+
+  const deleteLast = () => {
+    setDisplay((prev) => prev.slice(0, -1));
+  };
+
+  const clearDisplay = () => {
+    setDisplay('');
+  };
+
+  return (
+    <View style={{ backgroundColor: '#000', flex: 1 }}>
+      <View style={styles.Top}>
+        <Text style={styles.textStyle}>
+          Calculator
+        </Text>
+      </View>
+      <View style={styles.Sec}>
+        <View style={styles.SecText}>
+          <Text style={{ fontSize: 50, color: 'white' }}>
+            {display}
+          </Text>
         </View>
       </View>
 
-{/* Numboard */}
-  <View>
-      <View style={styles.NumBoard} >
-      {/* Info Num */}
-        <TouchableOpacity>
-      <View style={styles.NumS} >
-        <Text style={styles.NumSstyle} >AC</Text>
-      </View>
-        </TouchableOpacity>
-        <TouchableOpacity>
-      <View style={styles.NumS} >
-        <Text style={styles.NumSstyle} >%</Text>
-      </View>
-        </TouchableOpacity>
-        <TouchableOpacity>
-      <View style={styles.NumS} >
-          <Text style={styles.NumSstyle} >Del</Text>
-      </View>
-        </TouchableOpacity>
-        <TouchableOpacity>
-      <View style={styles.NumS2} >
-          <Text style={styles.NumSstyle} >/</Text>
-      </View>
-        </TouchableOpacity>
-    </View>
+      {/* Numboard */}
+      <View>
+        <View style={styles.NumBoard}>
+          <TouchableOpacity onPress={clearDisplay}>
+            <View style={styles.NumS}>
+              <Text style={styles.NumSstyle}>AC</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => Press('%')}>
+            <View style={styles.NumS}>
+              <Text style={styles.NumSstyle}>%</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={deleteLast}>
+            <View style={styles.NumS}>
+              <Text style={styles.NumSstyle}>Del</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => Press('/')}>
+            <View style={styles.NumS2}>
+              <Text style={styles.NumSstyle}>/</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
 
-      <View style={styles.NumBoard} >
-      {/* Info Num */}
-        <TouchableOpacity>
-      <View style={styles.NumS3} >
-        <Text style={styles.NumSstyle} >7</Text>
-      </View>
-        </TouchableOpacity>
-        <TouchableOpacity>
-      <View style={styles.NumS3} >
-        <Text style={styles.NumSstyle} >8</Text>
-      </View>
-        </TouchableOpacity>
-        <TouchableOpacity>
-      <View style={styles.NumS3} >
-          <Text style={styles.NumSstyle} >9</Text>
-      </View>
-        </TouchableOpacity>
-        <TouchableOpacity>
-      <View style={styles.NumS2} >
-          <Text style={styles.NumSstyle} >X</Text>
-      </View>
-        </TouchableOpacity>
-    </View>
-  
-  <View style={styles.NumBoard} >
-    {/* Info Num */}
-      <TouchableOpacity>
-    <View style={styles.NumS3} >
-      <Text style={styles.NumSstyle} >4</Text>
-    </View>
-      </TouchableOpacity>
-      <TouchableOpacity>
-    <View style={styles.NumS3} >
-      <Text style={styles.NumSstyle} >5</Text>
-    </View>
-      </TouchableOpacity>
-      <TouchableOpacity>
-    <View style={styles.NumS3} >
-        <Text style={styles.NumSstyle} >6</Text>
-    </View>
-      </TouchableOpacity>
-      <TouchableOpacity>
-    <View style={styles.NumS2} >
-        <Text style={styles.NumSstyle} >-</Text>
-    </View>
-      </TouchableOpacity>
-  </View>
+        {/* แถวที่สอง */}
+        <View style={styles.NumBoard}>
+          <TouchableOpacity onPress={() => Press('7')}>
+            <View style={styles.NumS3}>
+              <Text style={styles.NumSstyle}>7</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => Press('8')}>
+            <View style={styles.NumS3}>
+              <Text style={styles.NumSstyle}>8</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => Press('9')}>
+            <View style={styles.NumS3}>
+              <Text style={styles.NumSstyle}>9</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => Press('*')}>
+            <View style={styles.NumS2}>
+              <Text style={styles.NumSstyle}>X</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
 
-  <View style={styles.NumBoard} >
-    {/* Info Num */}
-      <TouchableOpacity>
-    <View style={styles.NumS3} >
-      <Text style={styles.NumSstyle} >1</Text>
-    </View>
-      </TouchableOpacity>
-      <TouchableOpacity>
-    <View style={styles.NumS3} >
-      <Text style={styles.NumSstyle} >2</Text>
-    </View>
-      </TouchableOpacity>
-      <TouchableOpacity>
-    <View style={styles.NumS3} >
-        <Text style={styles.NumSstyle} >3</Text>
-    </View>
-      </TouchableOpacity>
-      <TouchableOpacity>
-    <View style={styles.NumS2} >
-        <Text style={styles.NumSstyle} >+</Text>
-    </View>
-      </TouchableOpacity>
-  </View>
+        {/* แถวที่สาม */}
+        <View style={styles.NumBoard}>
+          <TouchableOpacity onPress={() => Press('4')}>
+            <View style={styles.NumS3}>
+              <Text style={styles.NumSstyle}>4</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => Press('5')}>
+            <View style={styles.NumS3}>
+              <Text style={styles.NumSstyle}>5</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => Press('6')}>
+            <View style={styles.NumS3}>
+              <Text style={styles.NumSstyle}>6</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => Press('-')}>
+            <View style={styles.NumS2}>
+              <Text style={styles.NumSstyle}>-</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
 
-  <View style={styles.NumBoard} >
-    {/* Info Num */}
-      <TouchableOpacity>
-    <View style={styles.NumS3} >
-      <Text style={styles.NumSstyle} >00</Text>
-    </View>
-      </TouchableOpacity>
-      <TouchableOpacity>
-    <View style={styles.NumS3} >
-      <Text style={styles.NumSstyle} >0</Text>
-    </View>
-      </TouchableOpacity>
-      <TouchableOpacity>
-    <View style={styles.NumS3} >
-        <Text style={styles.NumSstyle} >.</Text>
-    </View>
-      </TouchableOpacity>
-    <TouchableOpacity>
-    <View style={styles.NumS2} >
-        <Text style={styles.NumSstyle} >=</Text>
-    </View>
-      </TouchableOpacity>
-      
-  </View>
-  </View>
+        {/* แถวที่สี่ */}
+        <View style={styles.NumBoard}>
+          <TouchableOpacity onPress={() => Press('1')}>
+            <View style={styles.NumS3}>
+              <Text style={styles.NumSstyle}>1</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => Press('2')}>
+            <View style={styles.NumS3}>
+              <Text style={styles.NumSstyle}>2</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => Press('3')}>
+            <View style={styles.NumS3}>
+              <Text style={styles.NumSstyle}>3</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => Press('+')}>
+            <View style={styles.NumS2}>
+              <Text style={styles.NumSstyle}>+</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
 
-  </View>
-)
+        {/* แถวสุดท้าย */}
+        <View style={styles.NumBoard}>
+          <TouchableOpacity onPress={() => Press('00')}>
+            <View style={styles.NumS3}>
+              <Text style={styles.NumSstyle}>00</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => Press('0')}>
+            <View style={styles.NumS3}>
+              <Text style={styles.NumSstyle}>0</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => Press('.')}>
+            <View style={styles.NumS3}>
+              <Text style={styles.NumSstyle}>.</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={calculateResult}>
+            <View style={styles.NumS2}>
+              <Text style={styles.NumSstyle}>=</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </View>
+  );
+};
+
 const styles = StyleSheet.create({
   Top: {
     marginTop: 30,
