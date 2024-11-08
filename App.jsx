@@ -28,7 +28,7 @@ const App = () => {
     <View style={{ backgroundColor: '#000', flex: 1 }}>
       <View style={styles.Top}>
         <Text style={styles.textStyle}>
-          Calculator
+          Calculator - Siwaprecha
         </Text>
       </View>
       <View style={styles.Sec}>
@@ -39,7 +39,7 @@ const App = () => {
         </View>
       </View>
 
-      {/* Numboard */}
+      {/* Numboard - Row - 1 */}
       <View>
         <View style={styles.NumBoard}>
           <TouchableOpacity onPress={clearDisplay}>
@@ -64,7 +64,7 @@ const App = () => {
           </TouchableOpacity>
         </View>
 
-        {/* แถวที่สอง */}
+        {/* Numboard - Row - 2 */}
         <View style={styles.NumBoard}>
           <TouchableOpacity onPress={() => Press('7')}>
             <View style={styles.NumS3}>
@@ -88,7 +88,7 @@ const App = () => {
           </TouchableOpacity>
         </View>
 
-        {/* แถวที่สาม */}
+        {/* Numboard - Row - 3 */}
         <View style={styles.NumBoard}>
           <TouchableOpacity onPress={() => Press('4')}>
             <View style={styles.NumS3}>
@@ -112,7 +112,7 @@ const App = () => {
           </TouchableOpacity>
         </View>
 
-        {/* แถวที่สี่ */}
+        {/* Numboard - Row - 4 */}
         <View style={styles.NumBoard}>
           <TouchableOpacity onPress={() => Press('1')}>
             <View style={styles.NumS3}>
@@ -136,7 +136,7 @@ const App = () => {
           </TouchableOpacity>
         </View>
 
-        {/* แถวสุดท้าย */}
+        {/* Numboard - Row - 5 */}
         <View style={styles.NumBoard}>
           <TouchableOpacity onPress={() => Press('00')}>
             <View style={styles.NumS3}>
